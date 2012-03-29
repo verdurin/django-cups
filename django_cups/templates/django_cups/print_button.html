@@ -1,0 +1,8 @@
+{% load i18n %}
+<input type="button" id="django_cups_button" value="{{ button_text }}"/>
+<script type="text/javascript">
+	$('#django_cups_button').click(function(){
+		django_cups.print_form.Display('{{ print_url }}');
+		return false;
+	});
+</script>

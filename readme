@@ -1,0 +1,19 @@
+
+to install it : 
+
+copy django_cups folder in your python path
+
+copy django_cups.js in media/js folder
+
+In settings.py
+add django_cups in INSTALLED_APPS
+
+and add the following to configure the cups server host
+
+CUPS_SERVERS = {'SERVER1':'localhost',
+                'MYSERVER':'192.168.1.3'}
+
+In urls.py
+
+add the following in urlpatterns
+(r'^django_cups/', include('django_cups.urls')),

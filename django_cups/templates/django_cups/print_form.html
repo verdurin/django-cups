@@ -1,0 +1,12 @@
+{% load i18n %}
+<div id="django_cups_tab">
+	<ul>
+		<li><a href="{% url django_cups.views.getFavoriteslist %}"><span>Favoris</span></a></li>
+		<li><a href="{% url django_cups.views.getPrinterslist %}"><span>Imprimantes</span></a></li>
+	</ul>
+	
+</div>
+<a href="{% url django_cups.views.refreshPrinterslist %}" class="printerreload">Recharger la liste des imprimantes</a>
+<script type="text/javascript">
+	django_cups.print_form.init_form();
+</script>
