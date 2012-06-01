@@ -5,10 +5,10 @@
 		<img src="/media/imgs/printer.png" />
 		{{ favorite.printer.server_name }} {{ favorite.printer }}
 		<small>({{ favorite.printer.location }})</small></a>
-		<a href="{% url django_cups.views.delFavorite favorite.printer.id %}" class="printerdelfromfav">Retirer</a>
+		<a href="{% url django_cups.views.delFavorite favorite.printer.id %}" class="printerdelfromfav">Remove</a>
 		</li>
 	{% endfor %}
 	</ul>
 {% else %}
-	Aucune imprimante.
+	No printers found
 {% endif %}

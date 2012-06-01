@@ -34,11 +34,11 @@ class Printer(models.Model):
         unique_together = [('server','name'),]
         ordering = ['server_name','name']
     objects = PrinterManager()
-    server = models.CharField('Serveur',max_length=255)
-    server_name = models.CharField('Nom du Serveur',max_length=255)
-    name = models.CharField('Imprimante',max_length=255)
+    server = models.CharField('Server',max_length=255)
+    server_name = models.CharField('Server Name',max_length=255)
+    name = models.CharField('Printer',max_length=255)
     info = models.CharField('Description',max_length=255)
-    location = models.CharField('Emplacement',max_length=255)
+    location = models.CharField('Location',max_length=255)
     
     def __unicode__(self):
         return '%s'%self.name
