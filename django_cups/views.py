@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response,redirect,get_object_or_404
 from django.template import RequestContext
-from django_cups.models import Printer,FavoritePrinter
+from django_cups.models import Printer,FavouritePrinter
 from django.utils import simplejson
 from django.http import HttpResponse
 
@@ -22,27 +22,27 @@ def getPrinterslist(request):
     return rtr(request,'django_cups/printers_list.html', {'printers':printers})
 
 
-def getFavoriteslist(request):
+def getFavouriteslist(request):
     '''
-    return favorite printers list
+    return favourite printers list
     '''
-    printers = FavoritePrinter.objects.getFavorites(request.user)
-    return rtr(request,'django_cups/favorites_list.html', {'printers':printers})
+    printers = FavouritePrinter.objects.getFavourites(request.user)
+    return rtr(request,'django_cups/favourites_list.html', {'printers':printers})
 
-def addFavorite(request,printer_id):
+def addFavourite(request,printer_id):
     '''
-    add a new printer to favorite
+    add a new printer to favourites
     '''
     printer = get_object_or_404(Printer,pk=printer_id)
-    printer.addToFavorite(request.user)
+    printer.addToFavourite(request.user)
     return HttpResponse(simplejson.dumps({'status':True}))
 
-def delFavorite(request,printer_id):
+def delFavourite(request,printer_id):
     '''
-    remove a favorite printer
+    remove a favourite printer
     '''
     printer = get_object_or_404(Printer,pk=printer_id)
-    printer.delFromFavorite(request.user)
+    printer.delFromFavourite(request.user)
     return HttpResponse(simplejson.dumps({'status':True}))
 
 def refreshPrinterslist(request):

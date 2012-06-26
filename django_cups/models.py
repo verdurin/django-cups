@@ -43,19 +43,19 @@ class Printer(models.Model):
     def __unicode__(self):
         return '%s'%self.name
     
-    def addToFavorite(self,user):
+    def addToFavourite(self,user):
         '''
-        Add to favorite
+        Add to favourites list
         '''
-        FavoritePrinter.objects.addPrinter(user,self)
+        FavouritePrinter.objects.addPrinter(user,self)
     
     def delFromFavorite(self,user):
         '''
-        del from favorite
+        Delete from favourites list
         '''
-        favorites = self.favoriteprinter_set.filter(user=user)
-        if favorites:
-            favorites.delete()
+        favourites = self.favouriteprinter_set.filter(user=user)
+        if favourites:
+            favourites.delete()
         
     def printFile(self,filename,title='django_cups print',options={}):
         '''
@@ -72,25 +72,25 @@ class Printer(models.Model):
         conn = cups.Connection(self.server)
         conn.printTestPage(self.name)
 
-class FavoriteManager(models.Manager):
-    def getFavorites(self,user):
+class FavouriteManager(models.Manager):
+    def getFavourites(self,user):
         '''
-        return all favorites printers for a user
+        return all favourite printers for a user
         '''
         printers = self.filter(user=user)
         return printers
     
     def addPrinter(self,user,printer):
         '''
-        add a new printer to favorite list
+        add a new printer to favourite list
         '''
         printer,created = self.get_or_create(user=user,printer=printer)
 
-class FavoritePrinter(models.Model):
+class FavouritePrinter(models.Model):
     class Meta:
         unique_together = [('user','printer')]
         ordering = ['printer__server_name','printer__name']
-    objects = FavoriteManager()
+    objects = FavouriteManager()
     user = models.ForeignKey(User)
     printer = models.ForeignKey(Printer)
     

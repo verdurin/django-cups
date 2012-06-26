@@ -5,7 +5,7 @@
 		<img src="/media/imgs/printer.png" />
 		{{ printer.server_name }} {{ printer }}
 		<small>({{ printer.location }})</small></a>
-		<a href="{% url django_cups.views.addFavorite printer.id %}" class="printeraddtofav">Add to favourites</a>
+		<a href="{% url django_cups.views.addFavourite printer.id %}" class="printeraddtofav">Add to favourites</a>
 		</li>
 	{% endfor %}
 	</ul>
